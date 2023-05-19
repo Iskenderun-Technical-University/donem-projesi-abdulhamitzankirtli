@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/uelKf0-p)
 E-ticaret kitap web sitesi oluşturma motivasyonum, benim bir kitap tutkunu olarak, okuma deneyimini diğer insanlarla paylaşmak ve kitaplar üzerindeki bilgiyi geniş bir kitleyle paylaşmak isteğimden kaynaklanmaktadır.
 
 Kitaplar benim için sadece birer hikaye aracı değil, aynı zamanda bilgi ve ilham kaynağıdır. Bir e-ticaret kitap web sitesi oluşturarak, okuma tutkumu diğer kitap severlerle paylaşmak ve onlara farklı türlerdeki kitapları sunmak istiyorum. İnsanların hayatlarına dokunan, düşündüren ve eğlendiren kitapları keşfetmelerine yardımcı olmak benim için büyük bir tatmin kaynağı olacaktır.
