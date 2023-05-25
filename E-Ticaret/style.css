@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
 * {
   font-family: "Montserrat", sans-serif;
   padding: 0;
@@ -10,13 +11,14 @@
   --black: #1c2a39;
   --gray: #5c6a79;
   --purple: #4c3db2;
+  --transition: all 250ms ease-in-out;
 }
 
-.title{
+.title {
   font-weight: bold;
 }
 
-.navbar{
+.navbar {
   height: 120px;
   width: 80%;
   margin-left: 10%;
@@ -24,35 +26,37 @@
   flex-direction: row;
 }
 
-.menu, .menu_icons{
+.menu,
+.menu_icons {
   list-style-type: none;
-   display: flex;
-   flex-direction: row;
-   font-size: 20px;
-   color: var(--gray);
-   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  color: var(--gray);
+  cursor: pointer;
 }
 
-.menu .active{
+.menu .active {
   color: var(--black);
   font-weight: bold;
 }
 
-.menu li, .menu_icons li{
+.menu li,
+.menu_icons li {
   margin: 10px;
 }
 
-.menu_icons {
-}
-.menu_icons li{
+.menu_icons {}
+
+.menu_icons li {
   color: var(--black);
 }
 
-.sepet_icon{
+.sepet_icon {
   position: relative;
 }
 
-.sepet_top{
+.sepet_top {
   position: absolute;
   right: -0.7rem;
   bottom: 0;
@@ -67,19 +71,247 @@
   font-weight: bold;
   font-size: 1rem;
 }
-.slider{
+
+.slider {
   width: 80%;
   height: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.slider img{
+.slider img {
   height: 600px;
 }
 
-.store{
+.store {
   width: 80%;
   margin-left: 10%;
-  
+}
+
+.kitap_kart {
+  height: 400px;
+}
+
+.fos {
+  font-family: "Open Sans", "sans-serif";
+}
+
+.gray {
+  color: var(--gray);
+
+}
+
+.black {
+  color: var(--black);
+}
+
+.fw_bold {
+  font-weight: bold;
+}
+
+.kitap_yildiz {
+  color: #eeedf5;
+  font-size: 1, 2rem;
+  margin-right: 5px;
+}
+
+.kitap_yildiz .bi-star-fill.active {
+  color: #f2c94c;
+}
+
+.kitap_inceleme {
+  color: var(--gray);
+}
+
+.eski_fiyat {
+  color: #bdbdbd;
+  text-decoration: line-through;
+}
+
+.kitap_icerik {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buton_mor {
+  cursor: pointer;
+  border: 2px solid var(--purple);
+  color: var(--purple);
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: transparent;
+  transition: var(--transition);
+}
+
+.buton_mor:hover {
+  background-color: var(--purple);
+  color: white;
+}
+
+.filter_background {
+  width: 600px;
+  height: 900px;
+  position: absolute;
+  left: 0;
+  background-color: #efeef6;
+  z-index: -1;
+}
+
+.filter {
+  position: absolute;
+  list-style-type: none;
+  display: flex;
+  min-height: 650px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.filter li {
+  color: var(--gray);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+
+}
+
+.filter li:hover {
+  color: var(--purple);
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 150ms ease-in-out;
+}
+
+.filter li.active {
+  color: var(--purple);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.filter li.active::before {
+  content: "";
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background-color: var(--purple);
+  display: inline-block;
+  position: absolute;
+  left: -5px;
+  margin-top: 10px;
+}
+
+.sepet_model {
+  position: fixed;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  background-color: #5c6a7950;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: var(--transition);
+}
+
+.sepet_model.active {
+  opacity: 1;
+  z-index: 999;
+}
+
+.sepet_items {
+  position: relative;
+  width: 0px;
+  height: 100%;
+  background-color: white;
+  float: right;
+  transition: var(--transition);
+}
+.sepet_model.active .sepet_items{
+width: 450px;
+}
+
+.sepet_items .bi-x {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 3rem;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.sepet_title {
+  color: var(--black);
+  margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.sepet_list {
+  list-style-type: none;
+  padding: 0 5px;
+  margin-top: 3rem;
+  max-height: 650px;
+  overflow-y: auto;
+}
+
+.sepet_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  margin: 0.7rem;
+}
+
+.sepet_item div {
+  padding-left: 10px;
+}
+
+.sepet_items-info {
+  width: 225px;
+}
+
+.sepet_items-info .sepet_kaldir {
+  cursor: pointer;
+  color: var(--gray);
+}
+
+.sepet_list .book_sayi {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.sepet_list .artir,
+.azalt {
+  cursor: pointer;
+  color: var(--purple);
+}
+
+.sepet_list .azalt {
+  margin-right: 5px;
+}
+
+.sepet_list .artir {
+  margin-left: 5px;
+}
+
+.cizgi {
+  background-color: #bdbdbd;
+  width: 90%;
+  height: 2px;
+  border-radius: 50%;
+  margin-left: 2.2rem;
+}
+
+.sepet_tutar {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 5%;
+  align-items: center;
+  width: inherit;
+}
+
+.sepet_tutar button {
+  width: 250px;
 }
