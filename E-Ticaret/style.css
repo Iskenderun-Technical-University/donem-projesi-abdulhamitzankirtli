@@ -92,6 +92,10 @@
   height: 400px;
 }
 
+.kitap_kart img {
+  height: 400px;
+}
+
 .fos {
   font-family: "Open Sans", "sans-serif";
 }
@@ -144,6 +148,7 @@
   font-weight: bold;
   background-color: transparent;
   transition: var(--transition);
+  padding: 5px 0;
 }
 
 .buton_mor:hover {
@@ -152,12 +157,15 @@
 }
 
 .filter_background {
-  width: 600px;
+  width: 33%;
   height: 900px;
   position: absolute;
   left: 0;
   background-color: #efeef6;
   z-index: -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .filter {
@@ -227,8 +235,9 @@
   float: right;
   transition: var(--transition);
 }
-.sepet_model.active .sepet_items{
-width: 450px;
+
+.sepet_model.active .sepet_items {
+  width: 450px;
 }
 
 .sepet_items .bi-x {
