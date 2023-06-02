@@ -1,4 +1,23 @@
-let bookList = [];
+let bookList = [],
+  sepetList = [];
+
+toastr.options = {
+  closeButton: false,
+  debug: false,
+  newestOnTop: false,
+  progressBar: false,
+  positionClass: "toast-bottom-right",
+  preventDuplicates: false,
+  onclick: null,
+  showDuration: "300",
+  hideDuration: "1000",
+  timeOut: "5000",
+  extendedTimeOut: "1000",
+  showEasing: "swing",
+  hideEasing: "linear",
+  showMethod: "fadeIn",
+  hideMethod: "fadeOut",
+};
 
 const toggleModel = () => {
   const sepetModelEl = document.querySelector(".sepet_model");
@@ -85,7 +104,9 @@ const createBookItemsHtml = () => {
                 : ""
             }
           </div>
-          <button class="buton_mor">Sepete Ekle</button>
+          <button class="buton_mor" onclick="addBookToSepet(${
+            book.id
+          })">Sepete Ekle</button>
         </div>
       </div>
     </div>
@@ -105,6 +126,99 @@ const filterBooks = (filterEl) => {
   createBookItemsHtml();
 };
 
+const listSepetItems = () => {
+  const sepetListEl = document.querySelector(".sepet_list");
+  document.querySelector(".sepet_top").innerHTML =
+    sepetList.length > 0 ? sepetList.length : null;
+  const totalPriceEl = document.querySelector(".total_price");
+
+  let sepetListHtml = "";
+  let totalPrice = 0;
+  sepetList.forEach((item) => {
+    totalPrice += item.product.price * item.quantity;
+    sepetListHtml += `
+    <li class="sepet_item">
+            <img
+              src="${item.product.imgSource}"
+              width="100"
+              height="150"
+            />
+            <div class="sepet_items-info">
+              <h4 class="black fw-bold">${item.product.name}</h4>
+              <span class="fs-5">${item.product.price}₺</span><br />
+              <span class="sepet_kaldir" onclick="removeItemToSepet(${item.product.id})">Kaldır</span>
+            </div>
+            <div class="book_sayi">
+              <span class="azalt" onclick="azaltItemToSepet(${item.product.id})">-</span>
+              <span class="">${item.quantity}</span>
+              <span class="artir"onclick="arttirItemToSepet(${item.product.id})">+</span>
+            </div>
+          </li>
+    `;
+  });
+  sepetListEl.innerHTML = sepetListHtml
+    ? sepetListHtml
+    : `
+  <li class="sepet_item">Sepette Ürün Bulunamadı</li>`;
+  totalPriceEl.innerHTML =
+    totalPrice > 0 ? "Toplam Fiyat: " + totalPrice.toFixed(2) + "₺" : null;
+};
+
+const addBookToSepet = (bookId) => {
+  let findBook = bookList.find((book) => book.id === bookId);
+  if (findBook) {
+    const sepetIndex = sepetList.findIndex(
+      (item) => item.product.id === bookId
+    );
+    if (sepetIndex === -1) {
+      let addedItem = { quantity: 1, product: findBook };
+      sepetList.push(addedItem);
+    } else {
+      if (
+        sepetList[sepetIndex].quantity < sepetList[sepetIndex].product.stock
+      ) {
+        sepetList[sepetIndex].quantity += 1;
+      } else {
+        toastr.warning("Kitap stokta yok", "Uyarı");
+        return;
+      }
+    }
+    listSepetItems();
+    toastr.success("İşlem başarıyla tamamlandı", "Başarılı");
+  }
+};
+
+const removeItemToSepet = (bookId) => {
+  const findedIndex = sepetList.findIndex((book) => book.product.id === bookId);
+
+  if (findedIndex !== -1) {
+    sepetList.splice(findedIndex, 1);
+  }
+  listSepetItems();
+};
+
+const azaltItemToSepet = (bookId) => {
+  const findedIndex = sepetList.findIndex(
+    (basket) => basket.product.id == bookId
+  );
+  if (findedIndex != -1) {
+    if (sepetList[findedIndex].quantity != 1)
+      sepetList[findedIndex].quantity -= 1;
+    else removeItemToSepet(bookId);
+  }
+  listSepetItems();
+};
+const arttirItemToSepet = (bookId) => {
+  const findedIndex = sepetList.findIndex(
+    (basket) => basket.product.id == bookId
+  );
+  if (findedIndex != -1) {
+    if (sepetList[findedIndex].quantity < sepetList[findedIndex].product.stock)
+      sepetList[findedIndex].quantity += 1;
+    else toastr.error("Kitap stokta yok", "Uyarı");
+  }
+  listSepetItems();
+};
 setTimeout(() => {
   createBookItemsHtml();
   createBookTypesHtml();
