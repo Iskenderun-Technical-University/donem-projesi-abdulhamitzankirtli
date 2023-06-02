@@ -1,6 +1,8 @@
+/* Fontlar */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
+/* Genel Stiller */
 * {
   font-family: "Montserrat", sans-serif;
   padding: 0;
@@ -14,10 +16,12 @@
   --transition: all 250ms ease-in-out;
 }
 
+/* Başlık Stili */
 .title {
   font-weight: bold;
 }
 
+/* Navigasyon Çubuğu Stili */
 .navbar {
   height: 120px;
   width: 80%;
@@ -72,6 +76,11 @@
   font-size: 1rem;
 }
 
+.sepet_top:empty {
+  display: none;
+}
+
+/* Slider Stili */
 .slider {
   width: 80%;
   height: 600px;
@@ -83,6 +92,7 @@
   height: 600px;
 }
 
+/* Mağaza Stili */
 .store {
   width: 80%;
   margin-left: 10%;
@@ -102,7 +112,6 @@
 
 .gray {
   color: var(--gray);
-
 }
 
 .black {
@@ -156,6 +165,7 @@
   color: white;
 }
 
+/* Filtre Stili */
 .filter_background {
   width: 33%;
   height: 900px;
@@ -182,7 +192,6 @@
   font-size: 1rem;
   margin-bottom: 2rem;
   cursor: pointer;
-
 }
 
 .filter li:hover {
@@ -210,6 +219,7 @@
   margin-top: 10px;
 }
 
+/* Sepet Modeli Stili */
 .sepet_model {
   position: fixed;
   opacity: 0;
@@ -323,4 +333,8 @@
 
 .sepet_tutar button {
   width: 250px;
+}
+
+.total_price:empty+.buton_mor {
+  display: none;
 }
